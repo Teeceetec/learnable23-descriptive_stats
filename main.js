@@ -12,7 +12,7 @@ class DescriptiveStatistics {
 
     //This measures central tendency - Median
       calculateMedian() {
-         const middleIndex = Math.flow(this.data.length / 2);
+         const middleIndex = Math.floor(this.data.length / 2);
 
           if (this.data.length % 2 === 0) {
             return (this.data[middleIndex -1] + this.data[middleIndex])
@@ -50,7 +50,7 @@ class DescriptiveStatistics {
             // Measure of dispersion - Variance 
             calculateVariance() {
                const mean = this.calculateMean();
-               const differences = this.data.map((value)=> math.pow(value - mean, 2));
+               const differences = this.data.map((value)=> Math.pow(value - mean, 2));
                const sumSquaredDiff = differences .reduce((acc, value) => acc + value,0);
                 return sumSquaredDiff / this.data.length;
               }
@@ -65,7 +65,7 @@ class DescriptiveStatistics {
                   const middleIndex = Math.floor(this.data.length / 2);
 
                   const lowerPart = this.data.slice(0,middleIndex);
-                  const upperPart = this.data.slice(0,upperPart);
+                  const upperPart = this.data.slice(0,lowerPart);
 
                   const lowerQuart = this.calculateMedian(lowerPart);
                   const upperQuart = this.calculateMedian(upperPart);
@@ -98,9 +98,9 @@ class DescriptiveStatistics {
                  console.log("Standard Deviation:", stats.calculateStandardDeviation());
 
                  const quartiles = stats.calculateQuartiles();
-                 console.log("Lower quart:", quartiles.lowerQuart());
-                 console.log("Median (Q2):", quartiles.median());
-                 console.log("Upper Quart:", quartiles.upperQuart());
+                 console.log("Lower quart:", quartiles.lowerQuart);
+                 console.log("Median (Q2):", quartiles.median);
+                 console.log("Upper Quart:", quartiles.upperQuart);
 
                  console.log("Interquartile Range:", stats.calculateInterquartileRange());
 
